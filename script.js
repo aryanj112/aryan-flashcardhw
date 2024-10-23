@@ -12,7 +12,6 @@ let showingTerm = true;
 
 // Start with this function to simply display the card
 function displayCard() {
-    
     if (showingTerm){
         document.getElementById("card-content").innerText = flashcards[currentIndex].term
     }
@@ -33,6 +32,7 @@ nextBtn.addEventListener("click", () => {
     else{
         currentIndex++;
     }
+    displayCard()
 })
 
 prevBtn.addEventListener("click", () => {
@@ -42,9 +42,14 @@ prevBtn.addEventListener("click", () => {
     else{
         currentIndex--;
     }
+    displayCard()
 })
 
-
+let notecard = document.getElementById("notecard")
+notecard.addEventListener("click", ()=>{
+    showingTerm = !showingTerm
+    displayCard()
+})
 
 // This line will display the card when the page is refreshed
 window.onload = displayCard;
