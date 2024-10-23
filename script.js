@@ -26,7 +26,7 @@ let nextBtn = document.getElementById("next-btn")
 let prevBtn = document.getElementById("prev-btn")
 
 nextBtn.addEventListener("click", () => {
-    if(currentIndex === 2){
+    if(currentIndex === flashcards.length - 1){
         currentIndex = 0;
     }
     else{
@@ -37,7 +37,7 @@ nextBtn.addEventListener("click", () => {
 
 prevBtn.addEventListener("click", () => {
     if(currentIndex === 0){
-        currentIndex = 2;
+        currentIndex = flashcards.length - 1;
     }
     else{
         currentIndex--;
@@ -45,10 +45,21 @@ prevBtn.addEventListener("click", () => {
     displayCard()
 })
 
-let notecard = document.getElementById("notecard")
-notecard.addEventListener("click", ()=>{
+let flashcard = document.getElementById("flashcard")
+flashcard.addEventListener("click", ()=>{
     showingTerm = !showingTerm
     displayCard()
+})
+
+
+let addCardButton = document.getElementById("add-card-btn")
+addCardButton.addEventListener("click", ()=>{
+    let newTerm = document.getElementById("new-term").value
+    let newDefinition = document.getElementById("new-definition").value
+    flashcards.push(
+        {term: newTerm, definition: newDefinition}
+    )
+
 })
 
 // This line will display the card when the page is refreshed
